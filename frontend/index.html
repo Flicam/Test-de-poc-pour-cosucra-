@@ -1,0 +1,72 @@
+<!-- Indique la version du HTML utilisée (HTML5). -->
+<!DOCTYPE html>
+<!-- Balise racine : tout le contenu HTML se trouve à l'intérieur. -->
+<html lang="fr">
+  <!-- Section d'en-tête : informations générales sur la page. -->
+  <head>
+    <!-- Définit l'encodage des caractères pour gérer correctement les accents. -->
+    <meta charset="UTF-8" />
+    <!-- Ajuste l'affichage sur mobile pour que la page soit responsive. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Texte affiché dans l'onglet du navigateur. -->
+    <title>Bibliothèque d'équipements - Simulateur énergétique</title>
+    <!-- Lien vers la feuille de style externe qui gère la présentation visuelle. -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <!-- Corps du document : tout ce qui est visible par l'utilisateur. -->
+  <body>
+    <!-- En-tête de la page : titre principal et description. -->
+    <header class="app-header">
+      <!-- Titre affiché en grand en haut de la page. -->
+      <h1>Simulateur énergétique - Bibliothèque d'équipements</h1>
+      <!-- Petit texte qui explique l'objectif de la page. -->
+      <p class="app-subtitle">
+        Cette page se connecte à l'API FastAPI pour récupérer les blocs disponibles.
+      </p>
+    </header>
+
+    <!-- Zone principale, organisée en colonnes par la feuille de style. -->
+    <main class="layout">
+      <!-- Colonne de gauche qui contient la bibliothèque de blocs. -->
+      <aside class="library" aria-label="Bibliothèque de blocs">
+        <!-- Titre de la section bibliothèque. -->
+        <h2>Bibliothèque</h2>
+        <!-- Conteneur vide : JavaScript y injectera les cartes d'équipements. -->
+        <div id="equipment-list" class="equipment-list" role="list"></div>
+      </aside>
+
+      <!-- Colonne centrale qui sert de bac à sable pour déposer les blocs. -->
+      <section
+        class="sandbox"
+        aria-label="Aire d'expérimentation"
+        aria-describedby="sandbox-instructions"
+      >
+        <!-- Titre de la zone bac à sable. -->
+        <div class="sandbox-header">
+          <h2>Bac à sable</h2>
+          <!-- Bouton pour vider rapidement tous les blocs ajoutés. -->
+          <button id="reset-sandbox" class="sandbox-reset" type="button">
+            Réinitialiser
+          </button>
+        </div>
+        <!-- Texte d'aide indiquant comment utiliser la zone. -->
+        <p id="sandbox-instructions" class="sandbox-help">
+          Glisse (drag) un bloc depuis la bibliothèque et dépose-le (drop) dans cette
+          zone. Tu peux aussi cliquer sur un bloc pour l'ajouter rapidement.
+        </p>
+        <!-- Conteneur vide : JavaScript y ajoutera les blocs sélectionnés par l'utilisateur. -->
+        <div
+          id="sandbox-area"
+          class="sandbox-area"
+          role="list"
+          tabindex="0"
+          aria-live="polite"
+        ></div>
+      </section>
+    </main>
+
+    <!-- Chargement du script JavaScript qui gère la logique de la page. -->
+    <script src="app.js"></script>
+  </body>
+</html>
+

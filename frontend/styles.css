@@ -1,0 +1,210 @@
+/*
+  Cette feuille de style crée une mise en page simple et moderne pour la bibliothèque.
+  Chaque section est commentée pour que tu puisses comprendre son rôle.
+*/
+
+:root {
+  /* Couleurs et tailles réutilisées dans toute l'interface. */
+  --color-background: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-text: #1f2937;
+  --color-accent: #2563eb;
+  --color-accent-light: #dbeafe;
+  --radius: 12px;
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  padding: 2rem 3rem 1rem;
+}
+
+.app-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.app-subtitle {
+  max-width: 560px;
+  color: #4b5563;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+  padding: 0 3rem 3rem;
+  flex: 1;
+}
+
+.library,
+.sandbox {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.library h2,
+.sandbox h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.sandbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sandbox-reset {
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  background-color: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sandbox-reset:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+
+.equipment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.equipment-card {
+  border: 1px solid var(--color-accent-light);
+  border-radius: var(--radius);
+  padding: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.equipment-card.dragging {
+  opacity: 0.6;
+  transform: scale(0.98);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+
+.equipment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 25px rgba(37, 99, 235, 0.15);
+}
+
+.equipment-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.equipment-card .equipment-category {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.equipment-card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.sandbox-help {
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.sandbox-area {
+  flex: 1;
+  border: 2px dashed var(--color-accent-light);
+  border-radius: var(--radius);
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  align-content: start;
+  background-color: #f9fafb;
+}
+
+.sandbox-area.drag-over {
+  border-style: solid;
+  border-color: var(--color-accent);
+  box-shadow: inset 0 0 0 3px rgba(37, 99, 235, 0.1);
+  background: linear-gradient(135deg, #eff6ff 0%, #f9fafb 100%);
+}
+
+.sandbox-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.sandbox-block {
+  background-color: #fff;
+  border-radius: var(--radius);
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sandbox-block strong {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.sandbox-block button {
+  align-self: flex-end;
+  border: none;
+  background: #f3f4f6;
+  color: #1f2937;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sandbox-block button:hover {
+  background: #dc2626;
+  color: #fff;
+}
+
+/* Version mobile : la bibliothèque passe au-dessus du bac à sable. */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
